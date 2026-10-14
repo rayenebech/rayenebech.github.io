@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rayene Bech, AI Engineer</title>
+<meta name="description" content="Rayene Bech is a Senior AI Engineer in Helsinki building speech, language and agentic AI systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <nav>
+      <a class="mark" href="#top">Rayene Bech</a>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#career">Career</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <p class="intro"><strong>Rayene Bech</strong>, Senior AI Engineer in Helsinki</p>
+    <h1 id="headline">I build AI that listens, understands and answers, in real time and across languages.</h1>
+
+    <div class="signal" aria-hidden="true">
+      <svg class="wave" id="wave" viewBox="0 0 1056 84" preserveAspectRatio="none"></svg>
+      <div class="playhead" id="playhead"></div>
+    </div>
+
+    <div class="hero-actions">
+      <a class="btn solid" href="#work">See my work</a>
+      <a class="btn ghost" href="mailto:rayenebech@gmail.com">Get in touch</a>
+      <button class="replay" id="replay" type="button">Replay</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- ---------- Selected work ---------- -->
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Selected work</h2>
+        <p>Production systems in healthcare, enterprise support and legal tech, plus open research on medical language models.</p>
+      </div>
+
+      <article class="project">
+        <div>
+          <p class="ctx">Tietoevry, for HUS Helsinki University Hospital</p>
+          <h3>Real-time speech translation between clinicians and patients</h3>
+          <p>Doctors and patients who don't share a language usually wait for an interpreter. I contributed to a live speech-to-speech pipeline that lets them talk directly: speech is transcribed as it's spoken, translated with medical context, and voiced back in the patient's language.</p>
+          <p class="outcome">I co-authored the academic evaluation of the system, and my master's thesis compared this cascaded design against direct speech-to-speech models.</p>
+          <ul class="tags"><li>Streaming STT</li><li>Machine translation</li><li>TTS</li><li>Azure Speech</li><li>Healthcare</li></ul>
+        </div>
+        <figure class="diagram" style="margin:0">
+          <ol class="flow">
+            <li class="node io"><b>Clinician speaks</b><span>Finnish, natural conversation</span></li>
+            <li class="node"><b>Streaming speech-to-text</b><span>Partial transcripts while speaking</span></li>
+            <li class="node key"><b>Medical machine translation</b><span>Terminology-aware</span></li>
+            <li class="node"><b>Text-to-speech</b><span>Low-latency voice output</span></li>
+            <li class="node io"><b>Patient hears their language</b><span>And replies the same way</span></li>
+          </ol>
+          <figcaption>Cascaded pipeline, running in both directions.</figcaption>
+        </figure>
+      </article>
+
+      <article class="project">
+        <div>
+          <p class="ctx">Tietoevry</p>
+          <h3>Multi-agent assistant for enterprise customer enquiries</h3>
+          <p>Customer questions often need answers drawn from several internal knowledge bases at once. I architected a multi-agent RAG system in which an orchestrator routes each enquiry to specialised agents for retrieval and tool use, then composes a grounded reply with its sources.</p>
+          <ul class="tags"><li>Multi-agent orchestration</li><li>RAG</li><li>Tool use</li><li>Voicebot</li><li>Evaluation</li></ul>
+        </div>
+        <figure class="diagram" style="margin:0">
+          <ol class="flow">
+            <li class="node io"><b>Customer enquiry</b><span>Text or voice</span></li>
+            <li class="node key"><b>Orchestrator agent</b><span>Plans and routes the request</span></li>
+            <li class="fan">
+              <div class="node"><b>Retrieval</b><span>Knowledge bases</span></div>
+              <div class="node"><b>Tools</b><span>Internal systems</span></div>
+              <div class="node"><b>Policy</b><span>Rules and checks</span></div>
+            </li>
+            <li class="node"><b>Grounded answer</b><span>Composed from evidence</span></li>
+            <li class="node io"><b>Reply with sources</b><span>Or handover to a person</span></li>
+          </ol>
+          <figcaption>Specialised agents behind a single orchestrator.</figcaption>
+        </figure>
+      </article>
+
+      <article class="project">
+        <div>
+          <p class="ctx">KUIS AI Lab, Koç University, open source</p>
+          <h3>Hippocrates: open medical language models</h3>
+          <p>Most strong medical LLMs are closed, which makes them hard to study or trust. With the KUIS AI Lab team I co-developed Hippocrates, an open framework covering the full training recipe, from domain pre-training to preference alignment.</p>
+          <p class="outcome">The resulting models, built on Mistral and LLaMA-2, reached state-of-the-art results on medical benchmarks among open models of their size.</p>
+          <ul class="tags"><li>Continual pre-training</li><li>Instruction tuning</li><li>RLHF / RLAIF</li><li>Open source</li></ul>
+        </div>
+        <figure class="diagram" style="margin:0">
+          <ol class="flow">
+            <li class="node io"><b>Base model</b><span>Mistral 7B, LLaMA-2 7B</span></li>
+            <li class="node"><b>Continual pre-training</b><span>Medical text corpora</span></li>
+            <li class="node"><b>Instruction tuning</b><span>Clinical Q&amp;A and reasoning</span></li>
+            <li class="node key"><b>Preference alignment</b><span>RL from human and AI feedback</span></li>
+            <li class="node io"><b>Medical LLM</b><span>Evaluated on medical benchmarks</span></li>
+          </ol>
+          <figcaption>The training recipe, released openly end to end.</figcaption>
+        </figure>
+      </article>
+
+      <article class="project">
+        <div>
+          <p class="ctx">New Mind, Istanbul</p>
+          <h3>LLM legal assistant with built-in safeguards</h3>
+          <p>Lawyers need answers that point back to the source and can't be steered off course. I led an assistant that retrieves from legal documents, answers with a LoRA-tuned model, and screens every request for prompt injection and jailbreak attempts first.</p>
+          <p class="outcome">Fine-tuned with distributed training, quantized for cheaper serving, and deployed behind FastAPI.</p>
+          <ul class="tags"><li>LoRA</li><li>Quantization</li><li>RAG</li><li>Guardrails</li><li>FastAPI</li></ul>
+        </div>
+        <figure class="diagram" style="margin:0">
+          <ol class="flow">
+            <li class="node io"><b>Legal question</b><span>From a practitioner</span></li>
+            <li class="node"><b>Safety screen</b><span>Prompt-injection and jailbreak checks</span></li>
+            <li class="node"><b>Retrieval</b><span>Vector search over legal documents</span></li>
+            <li class="node key"><b>LoRA-tuned LLM</b><span>Quantized for serving</span></li>
+            <li class="node io"><b>Answer with citations</b><span>Traceable to the source text</span></li>
+          </ol>
+          <figcaption>Safety first, then retrieval, then generation.</figcaption>
+        </figure>
+      </article>
+    </div>
+  </section>
+
+  <!-- ---------- Career ---------- -->
+  <section id="career">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Career</h2>
+        <p>Five years building language and speech AI in Helsinki, Istanbul and Berlin, across healthcare, legal tech, banking and sales.</p>
+      </div>
+      <ol class="career">
+        <li>
+          <span class="yrs">2026 – now</span>
+          <span class="co">Renessai<small>Helsinki</small></span>
+          <span class="role">Senior AI Engineer<span class="now">Current</span></span>
+          <span class="focus">LLM, agentic and speech solutions for client teams</span>
+        </li>
+        <li>
+          <span class="yrs">2024 – 2026</span>
+          <span class="co">Tietoevry<small>Helsinki</small></span>
+          <span class="role">Senior AI Engineer</span>
+          <span class="focus">Multi-agent RAG, voicebots, medical speech translation</span>
+        </li>
+        <li>
+          <span class="yrs">2024</span>
+          <span class="co">KUIS AI Lab<small>Koç University, Istanbul</small></span>
+          <span class="role">AI Researcher</span>
+          <span class="focus">Open medical LLMs (Hippocrates)</span>
+        </li>
+        <li>
+          <span class="yrs">2021 – 2024</span>
+          <span class="co">New Mind<small>Istanbul</small></span>
+          <span class="role">NLP Engineer</span>
+          <span class="focus">Legal LLM assistant, Turkish language models, social media analytics</span>
+        </li>
+        <li>
+          <span class="yrs">2022</span>
+          <span class="co">Creatext<small>Berlin</small></span>
+          <span class="role">NLP Engineer</span>
+          <span class="focus">Generative models, compressed to cut hosting costs</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ---------- Education & research ---------- -->
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Education and research</h2>
+        <p>Both degrees on full scholarships, both theses on the problems I now work on.</p>
+      </div>
+      <div class="edu">
+        <div class="card">
+          <p class="ctx">University of Helsinki, 2024 – 2026</p>
+          <h3>M.Sc. in Data Science</h3>
+          <p class="quote">Evaluating the Performance of Direct Speech-to-Speech Translation Versus Cascaded ASR-based Pipelines in Multilingual Medical Conversations</p>
+          <p>Full scholarship.</p>
+        </div>
+        <div class="card">
+          <p class="ctx">Yıldız Technical University, Istanbul, 2019 – 2023</p>
+          <h3>B.Sc. in Computer Engineering</h3>
+          <p>Ranked first in the department, GPA 3.87 / 4.0. Thesis on RLHF for fine-tuning LLMs for data augmentation.</p>
+          <p>Turkish Government full scholarship.</p>
+        </div>
+        <div class="card pubs">
+          <p class="ctx">Publications</p>
+          <ul>
+            <li><b><a href="https://arxiv.org/abs/2404.16621" target="_blank">Hippocrates: An Open-Source Framework for Advancing Large Language Models in Healthcare </a></b><span>2024</span></li>
+            <li><b><a href="https://ieeexplore.ieee.org/document/9925328"  target="_blank" >Improving Abstractive Summarization for the Turkish Language </a></b><span>2022, curriculum learning for Turkish summarisation</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="toolbox">
+        <div><h4>Language models</h4><p>LLMs, multi-agent systems, RAG, LoRA and PEFT, RLHF, evaluation</p></div>
+        <div><h4>Speech</h4><p>Speech-to-text, text-to-speech, speech translation, Whisper, Azure Speech</p></div>
+        <div><h4>Engineering</h4><p>Python, PyTorch, LangChain, FastAPI, Docker, Kafka, Azure, AWS, GCP</p></div>
+        <div><h4>I speak</h4><p>Arabic, Turkish, English and French, and I'm learning Finnish</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- Contact ---------- -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <h2>Building something that needs to listen or talk back?</h2>
+      <div class="links">
+        <a class="btn solid" href="mailto:rayenebech@gmail.com">rayenebech@gmail.com</a>
+        <!-- Replace with your own profile URLs -->
+        <a class="btn ghost" href="https://www.linkedin.com/in/rayenebech99/">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/rayenebech">GitHub</a>
+      </div>
+      <footer>
+        <span>© <span id="yr">2026</span> Rayene Bech</span>
+        <span>Helsinki, Finland</span>
+      </footer>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var hero = document.getElementById('top');
+  var svg = document.getElementById('wave');
+  var playhead = document.getElementById('playhead');
+  var h1 = document.getElementById('headline');
+  var caps = Array.prototype.slice.call(document.querySelectorAll('.cap'));
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Split the headline into word spans for the "live transcript" reveal.
+  var text = h1.textContent;
+  h1.setAttribute('aria-label', text);
+  h1.innerHTML = text.split(' ').map(function (w) { return '<span class="w" aria-hidden="true">' + w + '</span>'; }).join(' ');
+  var words = Array.prototype.slice.call(h1.querySelectorAll('.w'));
+
+  // Speech-like waveform: syllable envelopes with jitter.
+  var W = 1056, H = 84, n = 132, gap = 3, bw = (W - gap * (n - 1)) / n;
+  var seed = 11;
+  function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+  var bars = [];
+  var syl = [];
+  for (var k = 0; k < 16; k++) syl.push([0.03 + k * 0.062 + (rnd() - 0.5) * 0.02, 0.018 + rnd() * 0.02]);
+  for (var i = 0; i < n; i++) {
+    var x = i / (n - 1), env = 0;
+    for (var s = 0; s < syl.length; s++) {
+      var d = (x - syl[s][0]) / syl[s][1];
+      env = Math.max(env, Math.exp(-d * d));
+    }
+    var amp = 0.05 + env * (0.45 + 0.55 * rnd());
+    var h = Math.max(2, amp * H);
+    var r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    r.setAttribute('x', (i * (bw + gap)).toFixed(2));
+    r.setAttribute('y', ((H - h) / 2).toFixed(2));
+    r.setAttribute('width', bw.toFixed(2));
+    r.setAttribute('height', h.toFixed(2));
+    r.setAttribute('rx', 1.5);
+    svg.appendChild(r);
+    bars.push(r);
+  }
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DURATION = 3200, raf = null;
+
+  function run() {
+    if (reduce) return;
+    cancelAnimationFrame(raf);
+    hero.classList.add('listening');
+    bars.forEach(function (b) { b.classList.remove('on'); });
+    words.forEach(function (w) { w.classList.remove('on'); });
+    caps.forEach(function (c) { c.classList.remove('on'); });
+    var start = null;
+    function step(t) {
+      if (start === null) start = t;
+      var p = Math.min(1, (t - start) / DURATION);
+      playhead.style.left = (p * 100) + '%';
+      var lit = Math.floor(p * n);
+      for (var i = 0; i < lit; i++) bars[i].classList.add('on');
+      var shown = Math.ceil(p * words.length);
+      for (var j = 0; j < shown; j++) words[j].classList.add('on');
+      if (p < 1) { raf = requestAnimationFrame(step); return; }
+      setTimeout(function () { caps[0].classList.add('on'); }, 150);
+      setTimeout(function () { caps[1].classList.add('on'); }, 650);
+      setTimeout(function () { hero.classList.remove('listening'); }, 1400);
+    }
+    raf = requestAnimationFrame(step);
+  }
+  document.getElementById('replay').addEventListener('click', run);
+  run();
+})();
+</script>
+</body>
+</html>
