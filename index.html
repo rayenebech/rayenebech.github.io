@@ -3,210 +3,345 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Rayene Bech, AI Engineer</title>
+<title>Rayene Bech</title>
 <meta name="description" content="Rayene Bech is a Senior AI Engineer in Helsinki building speech, language and agentic AI systems.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Noto+Sans+Arabic:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Aref+Ruqaa&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEE9E1;
+    --paper-2:#E6E0D6;
+    --card:#F4F0EA;
+    --ink:#34322E;
+    --ink-soft:#6B6760;
+    --line:#D3CCC0;
+    --sage:#8B9A85;
+    --clay:#B48A74;
+    --slate:#7F8C96;
+    --accent:var(--clay);
+    --script:"Allura", cursive;
+    --serif:"Cormorant Garamond", Georgia, serif;
+    --sans:"Jost", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#24231F; --paper-2:#2B2925; --card:#2E2C28; --ink:#E7E1D7; --ink-soft:#A8A197;
+      --line:#45413A; --sage:#9CAA95; --clay:#C79E88; --slate:#97A3AC;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#24231F; --paper-2:#2B2925; --card:#2E2C28; --ink:#E7E1D7; --ink-soft:#A8A197;
+    --line:#45413A; --sage:#9CAA95; --clay:#C79E88; --slate:#97A3AC;
+  }
 
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--sans); font-weight:300; font-size:17px; line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration-color:var(--line); text-underline-offset:4px}
+  a:hover{text-decoration-color:var(--accent)}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px}
+
+  /* ---------- header ---------- */
+  header{position:sticky; top:0; z-index:10; background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(8px); border-bottom:1px solid transparent; transition:border-color .3s}
+  header.scrolled{border-bottom-color:var(--line)}
+  .bar{display:flex; align-items:center; justify-content:space-between; height:72px; gap:16px}
+  .mark{font-family:var(--script); font-size:34px; text-decoration:none; line-height:1}
+  .tabs{display:flex; gap:4px; background:var(--paper-2); border-radius:999px; padding:4px}
+  .tab{
+    font:inherit; font-size:14px; letter-spacing:.14em; text-transform:uppercase; font-weight:400;
+    color:var(--ink-soft); background:none; border:0; border-radius:999px; padding:8px 20px; cursor:pointer;
+    transition:background .3s, color .3s;
+  }
+  .tab[aria-selected="true"]{background:var(--card); color:var(--ink); box-shadow:0 1px 2px rgba(0,0,0,.06)}
+  .tab:focus-visible{outline:1px solid var(--accent); outline-offset:2px}
+
+  /* ---------- hero ---------- */
+  .hero{padding:96px 0 72px; text-align:center}
+  .hello{font-family:var(--script); font-size:clamp(64px, 12vw, 120px); line-height:1; margin:0; font-weight:400}
+  .flourish{display:block; margin:6px auto 28px; width:min(260px,60%); height:24px}
+  .flourish path{fill:none; stroke:var(--accent); stroke-width:1.2; stroke-linecap:round;
+    stroke-dasharray:420; stroke-dashoffset:420; animation:draw 2.2s .4s ease forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @media (prefers-reduced-motion: reduce){ .flourish path{animation:none; stroke-dashoffset:0} .panel{animation:none!important} }
+  .eyebrow{font-size:13px; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-soft); margin:0 0 18px}
+  .lede{font-family:var(--serif); font-size:clamp(26px, 3.6vw, 38px); line-height:1.3; font-weight:400;
+    max-width:760px; margin:0 auto}
+  .lede em{color:var(--accent)}
+
+  /* ---------- sections ---------- */
+  section{padding:72px 0; border-top:1px solid var(--line)}
+  .sec-head{display:grid; grid-template-columns:200px 1fr; gap:32px; margin-bottom:44px; align-items:baseline}
+  .sec-head h2{font-family:var(--script); font-weight:400; font-size:52px; margin:0; line-height:1; color:var(--accent)}
+  .sec-head p{margin:0; color:var(--ink-soft); max-width:560px}
+  h3{font-family:var(--serif); font-weight:500; font-size:28px; line-height:1.25; margin:6px 0 14px}
+  .meta{font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft)}
+
+  /* work */
+  .work{display:grid; gap:28px}
+  .project{display:grid; grid-template-columns:1.15fr 1fr; gap:40px; background:var(--card);
+    border:1px solid var(--line); border-radius:6px; padding:40px}
+  .project p{margin:0 0 12px}
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; padding:0; list-style:none}
+  .chips li{font-size:13px; padding:3px 12px; border:1px solid var(--line); border-radius:999px; color:var(--ink-soft)}
+  .flow{list-style:none; margin:0; padding:0; counter-reset:s; position:relative}
+  .flow::before{content:""; position:absolute; left:13px; top:14px; bottom:30px; width:1px; background:var(--line)}
+  .flow li{counter-increment:s; position:relative; padding:0 0 16px 46px}
+  .flow li::before{content:counter(s); position:absolute; left:0; top:0; width:27px; height:27px; border-radius:50%;
+    background:var(--paper); border:1px solid var(--line); font-family:var(--serif); font-size:15px;
+    display:grid; place-items:center; color:var(--accent)}
+  .flow b{display:block; font-weight:500; font-size:15px}
+  .flow span{font-size:14px; color:var(--ink-soft)}
+  .caption{font-family:var(--serif); font-style:italic; color:var(--ink-soft); font-size:17px; margin:4px 0 0 46px}
+
+  /* career */
+  .timeline{list-style:none; margin:0; padding:0}
+  .timeline li{display:grid; grid-template-columns:140px 1fr 1.3fr; gap:24px; padding:20px 0; border-bottom:1px dashed var(--line)}
+  .timeline li:last-child{border-bottom:0}
+  .when{font-family:var(--serif); font-size:19px; color:var(--ink-soft)}
+  .who{font-family:var(--serif); font-size:22px; font-weight:500; line-height:1.2}
+  .who small{display:block; font-family:var(--sans); font-size:13px; font-weight:300; color:var(--ink-soft); letter-spacing:.04em}
+  .what b{font-weight:500}
+  .now{color:var(--sage); font-family:var(--script); font-size:24px; margin-left:6px}
+
+  /* education */
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:28px}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:32px}
+  .card p{margin:0 0 10px}
+  .thesis{font-family:var(--serif); font-style:italic; font-size:19px; line-height:1.4}
+  .pubs{list-style:none; padding:0; margin:36px 0 0}
+  .pubs li{padding:14px 0; border-bottom:1px dashed var(--line); display:flex; justify-content:space-between; gap:20px}
+  .pubs a{font-family:var(--serif); font-size:20px; font-weight:500}
+  .skills{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:44px}
+  .skills h4{font-family:var(--serif); font-weight:500; font-size:20px; margin:0 0 6px}
+  .skills p{margin:0; font-size:15px; color:var(--ink-soft)}
+
+  /* contact */
+  .contact{text-align:center; padding:96px 0}
+  .contact h2{font-family:var(--serif); font-weight:400; font-size:clamp(28px,4vw,42px); max-width:640px; margin:0 auto 28px; line-height:1.25}
+  .links{display:flex; flex-wrap:wrap; justify-content:center; gap:14px}
+  .btn{display:inline-block; padding:11px 26px; border:1px solid var(--ink); border-radius:999px; text-decoration:none;
+    font-size:14px; letter-spacing:.1em; text-transform:uppercase; transition:background .3s, color .3s}
+  .btn:hover{background:var(--ink); color:var(--paper)}
+  .btn.ghost{border-color:var(--line)}
+  footer{border-top:1px solid var(--line); padding:28px 0 40px; font-size:14px; color:var(--ink-soft)}
+  footer .wrap{display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap}
+
+  /* personal */
+  .loves{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
+  .love{background:var(--card); border:1px solid var(--line); border-radius:6px; padding:30px; position:relative}
+  .love .num{font-family:var(--script); font-size:44px; line-height:1; color:var(--sage)}
+  .love h3{font-size:24px; margin:10px 0 8px}
+  .love p{margin:0; color:var(--ink-soft); font-size:15.5px}
+  .love.todo{border-style:dashed; background:transparent}
+  .quote{font-family:var(--serif); font-style:italic; font-size:clamp(24px,3vw,32px); text-align:center;
+    max-width:720px; margin:0 auto; line-height:1.4}
+  .quote::before,.quote::after{content:"~"; font-family:var(--script); color:var(--accent); margin:0 14px}
+  .motto{margin:0; text-align:center}
+  .motto .ar{font-family:"Aref Ruqaa", var(--serif); font-size:clamp(40px,6vw,64px); line-height:1.5; margin:0; color:var(--ink)}
+  .motto .ar span{font-size:.6em; vertical-align:middle}
+  .motto figcaption{font-family:var(--serif); font-style:italic; font-size:clamp(20px,2.4vw,26px); color:var(--ink-soft); margin-top:6px}
+  .motto figcaption::before,.motto figcaption::after{content:"~"; font-family:var(--script); color:var(--accent); margin:0 12px}
+  .places{display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:10px 0}
+  .places span{font-family:var(--script); font-size:46px; padding:0 18px}
+  .places i{color:var(--line); font-style:normal}
+  .shaped{list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); border-top:1px dashed var(--line)}
+  .shaped li{font-family:var(--serif); font-size:24px; font-weight:500; line-height:1.3; padding:20px 0 20px 34px;
+    border-bottom:1px dashed var(--line); position:relative}
+  .shaped li::before{content:"❦"; position:absolute; left:2px; top:22px; font-size:18px; color:var(--sage)}
+  .shaped li small{display:block; font-family:var(--sans); font-size:14px; font-weight:300; color:var(--ink-soft)}
+  .posts{display:grid; gap:20px}
+  .post{display:block; text-decoration:none; background:var(--card); border:1px solid var(--line); border-radius:6px; padding:28px 32px; transition:border-color .3s}
+  .post:hover{border-color:var(--accent)}
+  .post h3{margin:4px 0 6px}
+  .post p{margin:0; color:var(--ink-soft)}
+  .empty{border:1px dashed var(--line); border-radius:6px; padding:48px 24px; text-align:center}
+  .empty .script{font-family:var(--script); font-size:56px; line-height:1; color:var(--accent)}
+  .empty p{margin:10px 0 0; color:var(--ink-soft); font-family:var(--serif); font-style:italic; font-size:19px}
+
+  .panel[hidden]{display:none}
+  .panel{animation:fade .5s ease}
+  @keyframes fade{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
+
+  @media (max-width:860px){
+    .project,.two{grid-template-columns:1fr}
+    .sec-head{grid-template-columns:1fr; gap:10px}
+    .timeline li{grid-template-columns:1fr; gap:4px}
+    .skills{grid-template-columns:1fr 1fr}
+    .loves{grid-template-columns:1fr}
+  }
+  @media (max-width:520px){
+    .wrap{padding:0 16px}
+    .mark{font-size:28px}
+    .tab{padding:7px 13px; font-size:12px; letter-spacing:.1em}
+    .project,.card{padding:26px}
+    .skills{grid-template-columns:1fr}
+    .places span{font-size:36px; padding:0 10px}
+    .pubs li{flex-direction:column; gap:2px}
+  }
+</style>
 </head>
 <body>
 
-<header class="hero" id="top">
-  <div class="wrap">
-    <nav>
-      <a class="mark" href="#top">Rayene Bech</a>
-      <ul>
-        <li><a href="#work">Work</a></li>
-        <li><a href="#career">Career</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-
-    <p class="intro"><strong>Rayene Bech</strong>, Senior AI Engineer in Helsinki</p>
-    <h1 id="headline">I build AI that listens, understands and answers, in real time and across languages.</h1>
-
-    <div class="signal" aria-hidden="true">
-      <svg class="wave" id="wave" viewBox="0 0 1056 84" preserveAspectRatio="none"></svg>
-      <div class="playhead" id="playhead"></div>
-    </div>
-
-    <div class="hero-actions">
-      <a class="btn solid" href="#work">See my work</a>
-      <a class="btn ghost" href="mailto:rayenebech@gmail.com">Get in touch</a>
-      <button class="replay" id="replay" type="button">Replay</button>
+<header id="top">
+  <div class="wrap bar">
+    <a class="mark" href="#top">Rayene</a>
+    <div class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" id="tab-pro" aria-controls="professional" aria-selected="true">Professional</button>
+      <button class="tab" role="tab" id="tab-me" aria-controls="personal" aria-selected="false" tabindex="-1">Personal</button>
     </div>
   </div>
 </header>
 
 <main>
-  <!-- ---------- Selected work ---------- -->
+<!-- ======================= PROFESSIONAL ======================= -->
+<div class="panel" id="professional" role="tabpanel" aria-labelledby="tab-pro">
+
+  <div class="wrap hero">
+    <p class="eyebrow">Senior AI Engineer · Helsinki</p>
+    <h1 class="hello">Rayene Bech</h1>
+    <svg class="flourish" viewBox="0 0 260 24" aria-hidden="true"><path d="M4 14 C 50 4, 90 22, 130 12 S 210 2, 256 12"/></svg>
+    <p class="lede">I build AI that <em>listens</em>, <em>understands</em> and <em>answers</em> — in real time and across languages.</p>
+  </div>
+
   <section id="work">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Selected work</h2>
+        <h2>Work</h2>
         <p>Production systems in healthcare, enterprise support and legal tech, plus open research on medical language models.</p>
       </div>
 
-      <article class="project">
-        <div>
-          <p class="ctx">Tietoevry, for HUS Helsinki University Hospital</p>
-          <h3>Real-time speech translation between clinicians and patients</h3>
-          <p>Doctors and patients who don't share a language usually wait for an interpreter. I contributed to a live speech-to-speech pipeline that lets them talk directly: speech is transcribed as it's spoken, translated with medical context, and voiced back in the patient's language.</p>
-          <p class="outcome">I co-authored the academic evaluation of the system, and my master's thesis compared this cascaded design against direct speech-to-speech models.</p>
-          <ul class="tags"><li>Streaming STT</li><li>Machine translation</li><li>TTS</li><li>Azure Speech</li><li>Healthcare</li></ul>
-        </div>
-        <figure class="diagram" style="margin:0">
-          <ol class="flow">
-            <li class="node io"><b>Clinician speaks</b><span>Finnish, natural conversation</span></li>
-            <li class="node"><b>Streaming speech-to-text</b><span>Partial transcripts while speaking</span></li>
-            <li class="node key"><b>Medical machine translation</b><span>Terminology-aware</span></li>
-            <li class="node"><b>Text-to-speech</b><span>Low-latency voice output</span></li>
-            <li class="node io"><b>Patient hears their language</b><span>And replies the same way</span></li>
-          </ol>
-          <figcaption>Cascaded pipeline, running in both directions.</figcaption>
-        </figure>
-      </article>
+      <div class="work">
+        <article class="project">
+          <div>
+            <div class="meta">Tietoevry · for HUS Helsinki University Hospital</div>
+            <h3>Real-time speech translation between clinicians and patients</h3>
+            <p>Doctors and patients who don't share a language usually wait for an interpreter. I contributed to a live speech-to-speech pipeline that lets them talk directly: speech is transcribed as it's spoken, translated with medical context, and voiced back in the patient's language.</p>
+            <p>I co-authored the academic evaluation of the system, and my master's thesis compared this cascaded design against direct speech-to-speech models.</p>
+            <ul class="chips"><li>Streaming STT</li><li>Machine translation</li><li>TTS</li><li>Azure Speech</li><li>Healthcare</li></ul>
+          </div>
+          <div>
+            <ol class="flow">
+              <li><b>Clinician speaks</b><span>Finnish, natural conversation</span></li>
+              <li><b>Streaming speech-to-text</b><span>Partial transcripts while speaking</span></li>
+              <li><b>Medical machine translation</b><span>Terminology-aware</span></li>
+              <li><b>Text-to-speech</b><span>Low-latency voice output</span></li>
+              <li><b>Patient hears their language</b><span>And replies the same way</span></li>
+            </ol>
+            <p class="caption">A cascaded pipeline, running in both directions.</p>
+          </div>
+        </article>
 
-      <article class="project">
-        <div>
-          <p class="ctx">Tietoevry</p>
-          <h3>Multi-agent assistant for enterprise customer enquiries</h3>
-          <p>Customer questions often need answers drawn from several internal knowledge bases at once. I architected a multi-agent RAG system in which an orchestrator routes each enquiry to specialised agents for retrieval and tool use, then composes a grounded reply with its sources.</p>
-          <ul class="tags"><li>Multi-agent orchestration</li><li>RAG</li><li>Tool use</li><li>Voicebot</li><li>Evaluation</li></ul>
-        </div>
-        <figure class="diagram" style="margin:0">
-          <ol class="flow">
-            <li class="node io"><b>Customer enquiry</b><span>Text or voice</span></li>
-            <li class="node key"><b>Orchestrator agent</b><span>Plans and routes the request</span></li>
-            <li class="fan">
-              <div class="node"><b>Retrieval</b><span>Knowledge bases</span></div>
-              <div class="node"><b>Tools</b><span>Internal systems</span></div>
-              <div class="node"><b>Policy</b><span>Rules and checks</span></div>
-            </li>
-            <li class="node"><b>Grounded answer</b><span>Composed from evidence</span></li>
-            <li class="node io"><b>Reply with sources</b><span>Or handover to a person</span></li>
-          </ol>
-          <figcaption>Specialised agents behind a single orchestrator.</figcaption>
-        </figure>
-      </article>
+        <article class="project">
+          <div>
+            <div class="meta">Tietoevry</div>
+            <h3>Multi-agent assistant for enterprise customer enquiries</h3>
+            <p>Customer questions often need answers drawn from several internal knowledge bases at once. I architected a multi-agent RAG system in which an orchestrator routes each enquiry to specialised agents for retrieval and tool use, then composes a grounded reply with its sources.</p>
+            <ul class="chips"><li>Multi-agent orchestration</li><li>RAG</li><li>Tool use</li><li>Voicebot</li><li>Evaluation</li></ul>
+          </div>
+          <div>
+            <ol class="flow">
+              <li><b>Customer enquiry</b><span>Text or voice</span></li>
+              <li><b>Orchestrator agent</b><span>Plans and routes the request</span></li>
+              <li><b>Specialised agents</b><span>Retrieval · tools · policy checks</span></li>
+              <li><b>Grounded answer</b><span>Composed from evidence</span></li>
+              <li><b>Reply with sources</b><span>Or handover to a person</span></li>
+            </ol>
+            <p class="caption">Specialised agents behind a single orchestrator.</p>
+          </div>
+        </article>
 
-      <article class="project">
-        <div>
-          <p class="ctx">KUIS AI Lab, Koç University, open source</p>
-          <h3>Hippocrates: open medical language models</h3>
-          <p>Most strong medical LLMs are closed, which makes them hard to study or trust. With the KUIS AI Lab team I co-developed Hippocrates, an open framework covering the full training recipe, from domain pre-training to preference alignment.</p>
-          <p class="outcome">The resulting models, built on Mistral and LLaMA-2, reached state-of-the-art results on medical benchmarks among open models of their size.</p>
-          <ul class="tags"><li>Continual pre-training</li><li>Instruction tuning</li><li>RLHF / RLAIF</li><li>Open source</li></ul>
-        </div>
-        <figure class="diagram" style="margin:0">
-          <ol class="flow">
-            <li class="node io"><b>Base model</b><span>Mistral 7B, LLaMA-2 7B</span></li>
-            <li class="node"><b>Continual pre-training</b><span>Medical text corpora</span></li>
-            <li class="node"><b>Instruction tuning</b><span>Clinical Q&amp;A and reasoning</span></li>
-            <li class="node key"><b>Preference alignment</b><span>RL from human and AI feedback</span></li>
-            <li class="node io"><b>Medical LLM</b><span>Evaluated on medical benchmarks</span></li>
-          </ol>
-          <figcaption>The training recipe, released openly end to end.</figcaption>
-        </figure>
-      </article>
+        <article class="project">
+          <div>
+            <div class="meta">KUIS AI Lab, Koç University · open source</div>
+            <h3>Hippocrates: open medical language models</h3>
+            <p>Most strong medical LLMs are closed, which makes them hard to study or trust. With the KUIS AI Lab team I co-developed Hippocrates, an open framework covering the full training recipe, from domain pre-training to preference alignment.</p>
+            <p>The resulting models, built on Mistral and LLaMA-2, reached state-of-the-art results on medical benchmarks among open models of their size.</p>
+            <ul class="chips"><li>Continual pre-training</li><li>Instruction tuning</li><li>RLHF / RLAIF</li><li>Open source</li></ul>
+          </div>
+          <div>
+            <ol class="flow">
+              <li><b>Base model</b><span>Mistral 7B, LLaMA-2 7B</span></li>
+              <li><b>Continual pre-training</b><span>Medical text corpora</span></li>
+              <li><b>Instruction tuning</b><span>Clinical Q&amp;A and reasoning</span></li>
+              <li><b>Preference alignment</b><span>RL from human and AI feedback</span></li>
+              <li><b>Medical LLM</b><span>Evaluated on medical benchmarks</span></li>
+            </ol>
+            <p class="caption">The training recipe, released openly end to end.</p>
+          </div>
+        </article>
 
-      <article class="project">
-        <div>
-          <p class="ctx">New Mind, Istanbul</p>
-          <h3>LLM legal assistant with built-in safeguards</h3>
-          <p>Lawyers need answers that point back to the source and can't be steered off course. I led an assistant that retrieves from legal documents, answers with a LoRA-tuned model, and screens every request for prompt injection and jailbreak attempts first.</p>
-          <p class="outcome">Fine-tuned with distributed training, quantized for cheaper serving, and deployed behind FastAPI.</p>
-          <ul class="tags"><li>LoRA</li><li>Quantization</li><li>RAG</li><li>Guardrails</li><li>FastAPI</li></ul>
-        </div>
-        <figure class="diagram" style="margin:0">
-          <ol class="flow">
-            <li class="node io"><b>Legal question</b><span>From a practitioner</span></li>
-            <li class="node"><b>Safety screen</b><span>Prompt-injection and jailbreak checks</span></li>
-            <li class="node"><b>Retrieval</b><span>Vector search over legal documents</span></li>
-            <li class="node key"><b>LoRA-tuned LLM</b><span>Quantized for serving</span></li>
-            <li class="node io"><b>Answer with citations</b><span>Traceable to the source text</span></li>
-          </ol>
-          <figcaption>Safety first, then retrieval, then generation.</figcaption>
-        </figure>
-      </article>
+        <article class="project">
+          <div>
+            <div class="meta">New Mind · Istanbul</div>
+            <h3>LLM legal assistant with built-in safeguards</h3>
+            <p>Lawyers need answers that point back to the source and can't be steered off course. I led an assistant that retrieves from legal documents, answers with a LoRA-tuned model, and screens every request for prompt injection and jailbreak attempts first.</p>
+            <p>Fine-tuned with distributed training, quantized for cheaper serving, and deployed behind FastAPI.</p>
+            <ul class="chips"><li>LoRA</li><li>Quantization</li><li>RAG</li><li>Guardrails</li><li>FastAPI</li></ul>
+          </div>
+          <div>
+            <ol class="flow">
+              <li><b>Legal question</b><span>From a practitioner</span></li>
+              <li><b>Safety screen</b><span>Prompt-injection and jailbreak checks</span></li>
+              <li><b>Retrieval</b><span>Vector search over legal documents</span></li>
+              <li><b>LoRA-tuned LLM</b><span>Quantized for serving</span></li>
+              <li><b>Answer with citations</b><span>Traceable to the source text</span></li>
+            </ol>
+            <p class="caption">Safety first, then retrieval, then generation.</p>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <!-- ---------- Career ---------- -->
   <section id="career">
     <div class="wrap">
       <div class="sec-head">
         <h2>Career</h2>
         <p>Five years building language and speech AI in Helsinki, Istanbul and Berlin, across healthcare, legal tech, banking and sales.</p>
       </div>
-      <ol class="career">
-        <li>
-          <span class="yrs">2026 – now</span>
-          <span class="co">Renessai<small>Helsinki</small></span>
-          <span class="role">Senior AI Engineer<span class="now">Current</span></span>
-          <span class="focus">LLM, agentic and speech solutions for client teams</span>
-        </li>
-        <li>
-          <span class="yrs">2024 – 2026</span>
-          <span class="co">Tietoevry<small>Helsinki</small></span>
-          <span class="role">Senior AI Engineer</span>
-          <span class="focus">Multi-agent RAG, voicebots, medical speech translation</span>
-        </li>
-        <li>
-          <span class="yrs">2024</span>
-          <span class="co">KUIS AI Lab<small>Koç University, Istanbul</small></span>
-          <span class="role">AI Researcher</span>
-          <span class="focus">Open medical LLMs (Hippocrates)</span>
-        </li>
-        <li>
-          <span class="yrs">2021 – 2024</span>
-          <span class="co">New Mind<small>Istanbul</small></span>
-          <span class="role">NLP Engineer</span>
-          <span class="focus">Legal LLM assistant, Turkish language models, social media analytics</span>
-        </li>
-        <li>
-          <span class="yrs">2022</span>
-          <span class="co">Creatext<small>Berlin</small></span>
-          <span class="role">NLP Engineer</span>
-          <span class="focus">Generative models, compressed to cut hosting costs</span>
-        </li>
+      <ol class="timeline">
+        <li><div class="when">2026 – now</div><div class="who">Renessai<span class="now">now</span><small>Helsinki</small></div><div class="what"><b>Senior AI Engineer</b><br>LLM, agentic and speech solutions for client teams</div></li>
+        <li><div class="when">2024 – 2026</div><div class="who">Tietoevry<small>Helsinki</small></div><div class="what"><b>Senior AI Engineer</b><br>Multi-agent RAG, voicebots, medical speech translation</div></li>
+        <li><div class="when">2024</div><div class="who">KUIS AI Lab<small>Koç University, Istanbul</small></div><div class="what"><b>AI Researcher</b><br>Open medical LLMs (Hippocrates)</div></li>
+        <li><div class="when">2021 – 2024</div><div class="who">New Mind<small>Istanbul</small></div><div class="what"><b>NLP Engineer</b><br>Legal LLM assistant, Turkish language models, social media analytics</div></li>
+        <li><div class="when">2022</div><div class="who">Creatext<small>Berlin</small></div><div class="what"><b>NLP Engineer</b><br>Generative models, compressed to cut hosting costs</div></li>
       </ol>
     </div>
   </section>
 
-  <!-- ---------- Education & research ---------- -->
   <section id="education">
     <div class="wrap">
       <div class="sec-head">
-        <h2>Education and research</h2>
+        <h2>Study</h2>
         <p>Both degrees on full scholarships, both theses on the problems I now work on.</p>
       </div>
-      <div class="edu">
+      <div class="two">
         <div class="card">
-          <p class="ctx">University of Helsinki, 2024 – 2026</p>
+          <div class="meta">University of Helsinki · 2024 – 2026</div>
           <h3>M.Sc. in Data Science</h3>
-          <p class="quote">Evaluating the Performance of Direct Speech-to-Speech Translation Versus Cascaded ASR-based Pipelines in Multilingual Medical Conversations</p>
-          <p>Full scholarship.</p>
+          <p class="thesis">Evaluating the Performance of Direct Speech-to-Speech Translation Versus Cascaded ASR-based Pipelines in Multilingual Medical Conversations</p>
+          <p class="meta">Full scholarship</p>
         </div>
         <div class="card">
-          <p class="ctx">Yıldız Technical University, Istanbul, 2019 – 2023</p>
+          <div class="meta">Yıldız Technical University, Istanbul · 2019 – 2023</div>
           <h3>B.Sc. in Computer Engineering</h3>
           <p>Ranked first in the department, GPA 3.87 / 4.0. Thesis on RLHF for fine-tuning LLMs for data augmentation.</p>
-          <p>Turkish Government full scholarship.</p>
-        </div>
-        <div class="card pubs">
-          <p class="ctx">Publications</p>
-          <ul>
-            <li><b><a href="https://arxiv.org/abs/2404.16621" target="_blank">Hippocrates: An Open-Source Framework for Advancing Large Language Models in Healthcare </a></b><span>2024</span></li>
-            <li><b><a href="https://ieeexplore.ieee.org/document/9925328"  target="_blank" >Improving Abstractive Summarization for the Turkish Language </a></b><span>2022, curriculum learning for Turkish summarisation</span></li>
-          </ul>
+          <p class="meta">Turkish Government full scholarship</p>
         </div>
       </div>
 
-      <div class="toolbox">
+      <ul class="pubs">
+        <li><a href="https://arxiv.org/abs/2404.16621">Hippocrates: An Open-Source Framework for Advancing Large Language Models in Healthcare</a><span class="meta">2024</span></li>
+        <li><a href="https://ieeexplore.ieee.org/document/9925328">Improving Abstractive Summarization for the Turkish Language</a><span class="meta">2022</span></li>
+      </ul>
+
+      <div class="skills">
         <div><h4>Language models</h4><p>LLMs, multi-agent systems, RAG, LoRA and PEFT, RLHF, evaluation</p></div>
         <div><h4>Speech</h4><p>Speech-to-text, text-to-speech, speech translation, Whisper, Azure Speech</p></div>
         <div><h4>Engineering</h4><p>Python, PyTorch, LangChain, FastAPI, Docker, Kafka, Azure, AWS, GCP</p></div>
@@ -215,93 +350,135 @@
     </div>
   </section>
 
-  <!-- ---------- Contact ---------- -->
   <section class="contact" id="contact">
     <div class="wrap">
-      <h2>Building something that needs to listen or talk back?</h2>
+      <h2>Building something that needs to listen, or talk back?</h2>
       <div class="links">
-        <a class="btn solid" href="mailto:rayenebech@gmail.com">rayenebech@gmail.com</a>
-        <!-- Replace with your own profile URLs -->
+        <a class="btn" href="mailto:rayenebech@gmail.com">Write to me</a>
         <a class="btn ghost" href="https://www.linkedin.com/in/rayenebech99/">LinkedIn</a>
         <a class="btn ghost" href="https://github.com/rayenebech">GitHub</a>
       </div>
-      <footer>
-        <span>© <span id="yr">2026</span> Rayene Bech</span>
-        <span>Helsinki, Finland</span>
-      </footer>
     </div>
   </section>
+</div>
+
+<!-- ======================= PERSONAL ======================= -->
+<div class="panel" id="personal" role="tabpanel" aria-labelledby="tab-me" hidden>
+
+  <div class="wrap hero">
+    <p class="eyebrow">Away from the keyboard</p>
+    <h1 class="hello">Hello, it's me</h1>
+    <svg class="flourish" viewBox="0 0 260 24" aria-hidden="true"><path d="M4 14 C 50 4, 90 22, 130 12 S 210 2, 256 12"/></svg>
+    <p class="lede">The things that keep me <em>curious</em>, <em>calm</em> and a little bit <em>inspired</em>.</p>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>I love</h2>
+        <p>A few of the things I make time for.</p>
+      </div>
+      <div class="loves">
+        <div class="love"><div class="num">i</div><h3>Travelling</h3><p>Discovering new places — wandering unfamiliar streets, finding the corners guidebooks miss, and coming home with a slightly different view of the world.</p></div>
+        <div class="love"><div class="num">ii</div><h3>Cooking</h3><p>Trying out new recipes, often ones I first tasted on a trip, and sharing whatever comes out of the kitchen with the people around me.</p></div>
+        <div class="love"><div class="num">iii</div><h3>Volunteering</h3><p>Giving time to communities that give so much back. Many of the people I've met this way have become friends, mentors and teachers.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Along the way</h2>
+        <p>Communities I've been part of over the years.</p>
+      </div>
+      <!-- EDIT: add a role or a line under any name with <small>…</small> -->
+      <ul class="shaped">
+        <li>GDG Algiers</li>
+        <li>Women Techmakers</li>
+        <li>CSE</li>
+        <li>Turkuaz Uluslararası Öğrenci Derneği</li>
+        <li>Ilm Academy</li>
+        <li>Diwan</li>
+        <li>Jil Tarjih</li>
+        <li>A-Nahdha bi Al-Quran</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="blog">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Journal</h2>
+        <p>Notes on places, recipes and the things I'm learning along the way.</p>
+      </div>
+      <div class="posts">
+        <!-- To add a post, copy this block above the empty note and delete the note:
+        <a class="post" href="blog/my-first-post.html">
+          <span class="meta">November 2026 · Travel</span>
+          <h3>Post title</h3>
+          <p>A one-line summary of what the post is about.</p>
+        </a>
+        -->
+        <div class="empty">
+          <span class="script">Soon</span>
+          <p>The first pages of this journal are still being written.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Homes</h2>
+        <p>Cities that have shaped me along the way.</p>
+      </div>
+      <div class="places">
+        <span>Batna</span><i>·</i><span>Algiers</span><i>·</i><span>Istanbul</span><i>·</i><span>Berlin</span><i>·</i><span>Helsinki</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <figure class="motto">
+        <p class="ar" lang="ar" dir="rtl">على ثغرك رابط <span aria-hidden="true">💫</span></p>
+        <figcaption>Stand steadfast at your post.</figcaption>
+      </figure>
+    </div>
+  </section>
+</div>
 </main>
 
+<footer>
+  <div class="wrap"><span>© 2026 Rayene Bech</span><span>Helsinki, Finland</span></div>
+</footer>
+
 <script>
-(function () {
-  var hero = document.getElementById('top');
-  var svg = document.getElementById('wave');
-  var playhead = document.getElementById('playhead');
-  var h1 = document.getElementById('headline');
-  var caps = Array.prototype.slice.call(document.querySelectorAll('.cap'));
-  document.getElementById('yr').textContent = new Date().getFullYear();
-
-  // Split the headline into word spans for the "live transcript" reveal.
-  var text = h1.textContent;
-  h1.setAttribute('aria-label', text);
-  h1.innerHTML = text.split(' ').map(function (w) { return '<span class="w" aria-hidden="true">' + w + '</span>'; }).join(' ');
-  var words = Array.prototype.slice.call(h1.querySelectorAll('.w'));
-
-  // Speech-like waveform: syllable envelopes with jitter.
-  var W = 1056, H = 84, n = 132, gap = 3, bw = (W - gap * (n - 1)) / n;
-  var seed = 11;
-  function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
-  var bars = [];
-  var syl = [];
-  for (var k = 0; k < 16; k++) syl.push([0.03 + k * 0.062 + (rnd() - 0.5) * 0.02, 0.018 + rnd() * 0.02]);
-  for (var i = 0; i < n; i++) {
-    var x = i / (n - 1), env = 0;
-    for (var s = 0; s < syl.length; s++) {
-      var d = (x - syl[s][0]) / syl[s][1];
-      env = Math.max(env, Math.exp(-d * d));
-    }
-    var amp = 0.05 + env * (0.45 + 0.55 * rnd());
-    var h = Math.max(2, amp * H);
-    var r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-    r.setAttribute('x', (i * (bw + gap)).toFixed(2));
-    r.setAttribute('y', ((H - h) / 2).toFixed(2));
-    r.setAttribute('width', bw.toFixed(2));
-    r.setAttribute('height', h.toFixed(2));
-    r.setAttribute('rx', 1.5);
-    svg.appendChild(r);
-    bars.push(r);
+  const tabs = [...document.querySelectorAll('.tab')];
+  function show(id, push){
+    tabs.forEach(t=>{
+      const on = t.getAttribute('aria-controls') === id;
+      t.setAttribute('aria-selected', on);
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if(push) history.replaceState(null,'', id === 'personal' ? '#personal' : location.pathname);
+    window.scrollTo({top:0});
   }
-
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var DURATION = 3200, raf = null;
-
-  function run() {
-    if (reduce) return;
-    cancelAnimationFrame(raf);
-    hero.classList.add('listening');
-    bars.forEach(function (b) { b.classList.remove('on'); });
-    words.forEach(function (w) { w.classList.remove('on'); });
-    caps.forEach(function (c) { c.classList.remove('on'); });
-    var start = null;
-    function step(t) {
-      if (start === null) start = t;
-      var p = Math.min(1, (t - start) / DURATION);
-      playhead.style.left = (p * 100) + '%';
-      var lit = Math.floor(p * n);
-      for (var i = 0; i < lit; i++) bars[i].classList.add('on');
-      var shown = Math.ceil(p * words.length);
-      for (var j = 0; j < shown; j++) words[j].classList.add('on');
-      if (p < 1) { raf = requestAnimationFrame(step); return; }
-      setTimeout(function () { caps[0].classList.add('on'); }, 150);
-      setTimeout(function () { caps[1].classList.add('on'); }, 650);
-      setTimeout(function () { hero.classList.remove('listening'); }, 1400);
-    }
-    raf = requestAnimationFrame(step);
-  }
-  document.getElementById('replay').addEventListener('click', run);
-  run();
-})();
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click',()=>show(t.getAttribute('aria-controls'),true));
+    t.addEventListener('keydown',e=>{
+      if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+        const n = tabs[(i + (e.key==='ArrowRight'?1:-1) + tabs.length) % tabs.length];
+        n.focus(); n.click();
+      }
+    });
+  });
+  if(location.hash === '#personal') show('personal');
+  const header = document.querySelector('header');
+  addEventListener('scroll',()=>header.classList.toggle('scrolled', scrollY > 10),{passive:true});
 </script>
 </body>
 </html>
